@@ -1,0 +1,44 @@
+﻿@model DateText
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Входные данные</h1>
+    <form class="text-center" method="post">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <p>
+            <label for="date" class="col-sm-2 col-lg-2 text-left">Дата: </label>
+            <input type="date" id="date" name="date" class="col-sm-6 col-lg-4 " />
+        </p>
+        <p>
+            <label for="text" class="col-sm-2 col-lg-2 text-left">Текст сообщения: </label>
+            <textarea id="text" name="text" rows="5" class="col-sm-6 col-lg-4 "></textarea>
+        </p>
+        <p><span asp-validation-for="Text"></span></p>        
+        <p>
+            <label class="col-sm-2 col-lg-2 "></label>
+            <button type="submit" class="col-sm-6 col-lg-4">Отправить</button>
+        </p>
+    </form>
+</div>
+<div class="text-center">
+    <table id="tableData" class='table table-bordered table-striped table-hover' aria-labelledby="tabelLabel">
+        <thead>
+            <tr>
+                <th style="width: 25%">Дата</th>
+                <th style="width: 75%">Текст сообщения</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DateText item in ViewBag.Records)
+            {
+                <tr>
+                    <td>@item.Date.Value.ToShortDateString()</td>
+                    <td>@item.Text</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
