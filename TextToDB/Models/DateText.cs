@@ -11,7 +11,6 @@ namespace TextToDB.Models
     {
         public int Id { get; set; }
         [Column(TypeName = "Date")] 
-        [DataType(DataType.Date)]
         public DateTime? Date { get; set; }
         [Required(ErrorMessage = "Сообщение не может быть пустым")]
         public string Text { get; set; }

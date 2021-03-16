@@ -43,7 +43,7 @@ namespace TextToDB.Controllers
                     db.SaveChanges();
                 }
                 else
-                    throw new Exception("Сообщение не может быть пустым");
+                    throw new Exception("Текстовое сообщение не может быть пустым");
             }
             catch (Exception ex)
             {
@@ -61,16 +61,12 @@ namespace TextToDB.Controllers
         {
             var hors = new HorsTextParser();
             var currentDate = DateTime.Now;
+            hors.RemoveRecognizers(typeof(Hors.Recognizers.TimeRecognizer));
             var result = hors.Parse(text, currentDate);
             if (result.Dates.Any())
                 return result.Dates.FirstOrDefault().DateFrom.Date;
             else
                 throw new Exception("Необходимо указать дату!");
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

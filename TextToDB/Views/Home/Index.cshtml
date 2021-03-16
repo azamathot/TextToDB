@@ -5,20 +5,19 @@
 
 <div class="text-center">
     <h1 class="display-4">Входные данные</h1>
-    <form class="text-center" method="post">
-        <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <form class="text-left" method="post">
         <p>
             <label for="date" class="col-sm-2 col-lg-2 text-left">Дата: </label>
             <input type="date" id="date" name="date" class="col-sm-6 col-lg-4 " />
         </p>
         <p>
-            <label for="text" class="col-sm-2 col-lg-2 text-left">Текст сообщения: </label>
-            <textarea id="text" name="text" rows="5" class="col-sm-6 col-lg-4 "></textarea>
-        </p>
-        <p><span asp-validation-for="Text"> </span></p>        
+            <label asp-for="Text" class="col-sm-2 col-lg-2 text-left">Текст сообщения: </label>
+            <textarea asp-for="Text" required rows="5" class="col-sm-6 col-lg-4"></textarea>
+            <span asp-validation-for="Text" class="col-sm-2 col-lg-2 text-right"></span>
+        </p>   
         <p>
             <label class="col-sm-2 col-lg-2 "></label>
-            <button type="submit" class="col-sm-6 col-lg-4">Отправить</button>
+            <button type="submit" class="col-sm-6 col-lg-4">Записать</button>
         </p>
     </form>
 </div>
@@ -40,5 +39,5 @@
             }
         </tbody>
     </table>
-
 </div>
+
